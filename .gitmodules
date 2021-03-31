@@ -1,0 +1,3 @@
+[submodule "contrib/Pheromones"]
+	path = contrib/Pheromones
+	url = https://github.com/SwarmUS/Pheromones

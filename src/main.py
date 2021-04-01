@@ -7,6 +7,7 @@ usb = SerialUsb("/dev/ttyACM1")
 usb.serConf()
 
 HIVEMIND_ID = 0
+REMOTE_ID = 42
 
 
 def send_message(message):
@@ -31,7 +32,7 @@ def construct_calib_message():
     interloc.calibration.CopyFrom(calib)
 
     message = Message()
-    message.source_id = HIVEMIND_ID
+    message.source_id = REMOTE_ID
     message.destination_id = HIVEMIND_ID
     message.interloc.CopyFrom(interloc)
 
@@ -65,6 +66,10 @@ def start_calib():
     message = construct_calib_message()
     message.interloc.calibration.startCalib.CopyFrom(start_calib)
     send_message(message)
+
+    if start_calib.mode == RESPONDER:
+        read_message()  # TODO: Check if correct message
+        print("Calibration finished")
 
 
 def stop_calib():

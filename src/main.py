@@ -3,7 +3,7 @@ from google.protobuf.internal.encoder import _VarintBytes
 from google.protobuf.internal.decoder import _DecodeVarint32
 from serial_util import SerialUsb
 
-usb = SerialUsb("/dev/ttyACM1")
+usb = SerialUsb()
 usb.serConf()
 
 HIVEMIND_ID = 0
